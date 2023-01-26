@@ -102,7 +102,6 @@ class VideoWriter {
             fatalError("canAddInput() returned false")
         }
         
-        // The pixel buffer adaptor must be created before we start writing.
         createPixelBufferAdaptor()
         
         if videoWriter.startWriting() == false {
@@ -132,7 +131,6 @@ class VideoWriter {
                 }
             }
             else {
-                // Fall through. The closure will be called again when the writer is ready.
             }
         }
     }
