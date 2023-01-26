@@ -102,12 +102,12 @@ private extension ChooseEffectViewController {
     }
     
     func setupButtons() {
-        leftToRight = createButtons(label: "Screwing",
-                                           image: #imageLiteral(resourceName: "screwing").withRenderingMode(.alwaysOriginal),
+        leftToRight = createButtons(label: "Bottom to Top",
+                                    image: #imageLiteral(resourceName: "bottomToTop").withRenderingMode(.alwaysOriginal),
                                            action: #selector(leftToRightButtonAction))
         
-        bottomToTop = createButtons(label: "From right to left",
-                                              image: #imageLiteral(resourceName: "rightToLeft").withRenderingMode(.alwaysOriginal),
+        bottomToTop = createButtons(label: "From left to right",
+                                              image: #imageLiteral(resourceName: "leftToRight").withRenderingMode(.alwaysOriginal),
                                               action: #selector(bottomToTopButtonAction))
         
         continueButton.configurateSelf(color: #colorLiteral(red: 0.6000000834, green: 0.6000000834,
