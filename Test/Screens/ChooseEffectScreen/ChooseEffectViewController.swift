@@ -26,6 +26,13 @@ class ChooseEffectViewController: UIViewController {
     private var leftToRight = UIButton()
     private var bottomToTop = UIButton()
     
+    private lazy var visualEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .dark)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -49,6 +56,7 @@ private extension ChooseEffectViewController {
         view.backgroundColor = .white
         setupNavigationBar()
         setupButtons()
+        setupBlurEffect()
     }
     
     func setupNavigationBar() {
@@ -207,7 +215,7 @@ private extension ChooseEffectViewController {
         }
         
         guard let alert = alert else { return }
-        
+        animateBlurBackgroundIn()
         self.present(alert, animated: true)
         
     }
@@ -223,6 +231,23 @@ private extension ChooseEffectViewController {
         case false:
             button.layer.borderColor = UIColor.clear.cgColor
         }
+    }
+    
+    func setupBlurEffect() {
+        view.addSubview(visualEffectView)
+        visualEffectView.isHidden = true
+        NSLayoutConstraint.activate([
+            visualEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            visualEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            visualEffectView.topAnchor.constraint(equalTo: view.topAnchor),
+            visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func animateBlurBackgroundIn() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.visualEffectView.isHidden = false
+        })
     }
     
 }
