@@ -67,13 +67,16 @@ private extension ChooseEffectViewController {
                                                 action: #selector(backAction))
         navigationItem.title = "Select 1 effect"
         navigationItem.setLeftBarButton(backButton, animated: true)
-        navigationBar?.layer.cornerRadius = 5
+        navigationBar?.layer.cornerRadius = 10
         navigationBar?.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
-        //        navigationBar?.layer.shadowColor = UIColor.black.cgColor
-        //        navigationBar?.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        //        navigationBar?.layer.shadowRadius = 4.0
-        //        navigationBar?.layer.shadowOpacity = 1.0
+        navigationBar?.backgroundColor = .white
+        navigationBar?.layer.masksToBounds = false
+        navigationBar?.isTranslucent = true
+        navigationBar?.layer.shadowColor = UIColor.black.cgColor
+        navigationBar?.layer.shadowOpacity = 0.3
+        navigationBar?.layer.shadowOffset = CGSize(width: 0, height: 10)
+        navigationBar?.layer.shadowRadius = 6
         
     }
     

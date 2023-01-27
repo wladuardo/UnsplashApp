@@ -50,17 +50,23 @@ private extension PhotosViewController {
         setupContinueButton()
     }
     
+    func setShadowColor(_ color: UIColor) {
+    }
+    
     func setupNavigationBar() {
-        let navigationBar = navigationController?.navigationBar
+        guard let navigationBar = navigationController?.navigationBar else { return }
         navigationItem.title = "Find photos"
         navigationItem.searchController = createSearchConroller()
-        navigationBar?.layer.cornerRadius = 5
-        navigationBar?.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        navigationBar.layer.cornerRadius = 10
+        navigationBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         
-        //        navigationBar?.layer.shadowColor = UIColor.black.cgColor
-        //        navigationBar?.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        //        navigationBar?.layer.shadowRadius = 4.0
-        //        navigationBar?.layer.shadowOpacity = 1.0
+        navigationBar.backgroundColor = .white
+        navigationBar.layer.masksToBounds = false
+        navigationBar.isTranslucent = true
+        navigationBar.layer.shadowColor = UIColor.black.cgColor
+        navigationBar.layer.shadowOpacity = 0.3
+        navigationBar.layer.shadowOffset = CGSize(width: 0, height: 10)
+        navigationBar.layer.shadowRadius = 6
         
     }
     
@@ -72,7 +78,7 @@ private extension PhotosViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         
         searchBar.delegate = self
-        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 0.9607843757, green: 0.9607843757, blue: 0.9607843757, alpha: 1)
+        searchBar.searchTextField.backgroundColor = .black.withAlphaComponent(0.04)
         searchBar.searchTextField.textAlignment = .left
         searchBar.showsCancelButton = false
         searchBar.searchTextField.clearButtonMode = .whileEditing
@@ -81,8 +87,8 @@ private extension PhotosViewController {
         searchBar.setImage(#imageLiteral(resourceName: "searchImg"),
                            for: .search,
                            state: .normal)
+        
         self.definesPresentationContext = true
-        self.navigationItem.searchController = searchController
         
         return searchController
     }
